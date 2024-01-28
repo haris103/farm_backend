@@ -9,15 +9,17 @@ const app = express();
 
 app.use(express.json());
 
-app.use(cors());
+// app.use(cors());
 
 const PORT = process.env.PORT || 4000;
 
-// app.use(cors({
-//     origin: 'http://localhost:3000',
-//     methods:['GET','POST','PUT','DELETE'],
-//     allowedHeaders:['Content-Type']
-// }))
+app.use(
+  cors({
+    origin: "*",
+    methods: ["GET", "POST", "PUT", "DELETE"],
+    allowedHeaders: ["Content-Type"],
+  })
+);
 
 //  const DB =
 //    "mongodb+srv://harismahmood103:6YmV12rRbNoIh72y@cluster0.klxu92w.mongodb.net/mern_haris?retryWrites=true&w=majority";
