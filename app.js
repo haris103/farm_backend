@@ -1,15 +1,17 @@
 import express from "express";
 import mongoose from "mongoose";
 import books_route from "./Routes/booksRoute.js";
-import user_route from "./Routes/userRoute.js"
-import cors from 'cors'
-
+import user_route from "./Routes/userRoute.js";
+import cors from "cors";
+import dotenv from "dotenv";
+dotenv.config();
 const app = express();
 
 app.use(express.json());
 
-app.use(cors())
+app.use(cors());
 
+const PORT = process.env.PORT || 4000;
 
 // app.use(cors({
 //     origin: 'http://localhost:3000',
@@ -17,12 +19,11 @@ app.use(cors())
 //     allowedHeaders:['Content-Type']
 // }))
 
-
- const DB =
-   "mongodb+srv://harismahmood103:6YmV12rRbNoIh72y@cluster0.klxu92w.mongodb.net/mern_haris?retryWrites=true&w=majority";
+//  const DB =
+//    "mongodb+srv://harismahmood103:6YmV12rRbNoIh72y@cluster0.klxu92w.mongodb.net/mern_haris?retryWrites=true&w=majority";
 
 mongoose
-  .connect(DB)
+  .connect(process.env.MONGO_URL)
   .then(() => {
     console.log("app connected");
   })
@@ -54,7 +55,6 @@ app.use("/api/books", books_route);
 
 app.use("/api/user", user_route);
 
-
-app.listen(4000, () => {
+app.listen(PORT, () => {
   console.log(`app running at 4000`);
 });
