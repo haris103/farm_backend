@@ -2,7 +2,7 @@
 import express from "express";
 
 import Stripe from 'stripe';
-const stripe = new Stripe('sk_test_51PGcgk08lQSBUyWSLbhKSvzxxm2oOHHEL0vIW6YVUj8tvd36SCH7sJQr7ZtNiZgEU7w1UZGHMdOIUHKKmGnW0vq100Pen1TyOB');
+const stripe = new Stripe('dummy_URL');
 
 const router = express.Router();
 
